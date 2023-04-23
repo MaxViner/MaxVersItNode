@@ -1,0 +1,282 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+}
+
+.logo{
+    font-size: 2em;
+    color: aliceblue;
+    user-select: none;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+nav>ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav>ul>li>a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: whitesmoke;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+    transform-origin: right;
+}
+nav>ul>li>a:hover::after{
+transform: scaleX(1);
+transform-origin: left;
+}
+nav>ul>li>a{
+    position: relative;
+    font-size: 1.1em;
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+  
+}
+
+.login-purpure{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid floralwhite;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: aliceblue;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: 0.5s;
+
+}
+.login-link{
+    color: rgb(39, 144, 241);
+}
+.login-purpure:hover{
+    background-color: rgb(53, 178, 227);
+    color: black;
+}
+
+body{
+    width: 1280px;display: flex;
+    flex-direction: column;
+    min-height: 100hv;
+    margin: 0 auto;
+    background-image: url("https://s1.1zoom.me/big0/857/Scenery_Mountains_Lake_Moon_Night_Reflection_518851_1280x800.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrapper{
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border:2px solid rgba(128, 128, 128, 0.529) ;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+margin-top: 200px;
+color: azure;
+box-shadow: 0px 0px 5px 2px #8C8C8C;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+transition: heigth 0.2s ease;
+transform: scale(0);
+transition: transform 0.5s ease, heigth 0.2s ease;
+}
+.wrapper.active-popur{
+    transform: scale(1);
+}
+.wrapper .active{
+    height: 520px;
+}
+
+.form-box{
+    width: 100%;
+    padding: 40px;
+}
+.Register{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+
+
+.form-box h2{
+    font-size: 2em;
+    color: rgb(3, 189, 241);
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top:50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: rgb(3, 189, 241);
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: rgb(3, 189, 241);
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    font-size: 26px;
+}
+
+.remember-forgot{
+    font-size: 0.9em;
+    color: rgb(3, 189, 241);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: rgb(0, 195, 255);
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: rgb(3, 189, 241);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+.icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: rgb(3, 189, 241);
+    font-size: 2em;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+.btn-sub{
+    width: 100%;
+    height: 45px;
+    color: rgb(34, 46, 49);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    background-color: rgba(0, 194, 253, 0.575);
+    font-weight: 500;
+}
+.reg-btn{
+    background: transparent;
+}
+.login-register{
+    font-size: 0.9em;
+    color: rgb(0, 162, 221);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+.login-register p a{
+    color: rgb(3, 189, 241);
+text-decoration: none;
+font-weight: 600;
+}
+
+.login-register p a:hover{
+    text-decoration: underline;
+}
+
+.wrapper  .form-box .login{
+    transition: transform  0.2s;
+    transform: translateX(0);
+   
+}
+
+
+.translate-visible{
+    transition: transform  0.2s;
+    transform: translateX(0px);
+    
+}
+
+.translate-unvisible{
+    transition: transform  0.2s;
+    transform: translateX(400px);
+   
+}
+
+
+.wrapper .active .form-box .login{
+    
+    transform: translateX(-400px);
+}
+.wrapper.active.form-box.Register{
+    transition: transform 0.2s ease;
+    transform: translateX(0);
+}

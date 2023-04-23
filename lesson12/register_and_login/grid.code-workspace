@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../portfolio/grid"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "register_and_login"
+	}
+}
