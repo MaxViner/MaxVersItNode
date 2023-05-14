@@ -83,30 +83,43 @@ function renderLoginPage() {
     const loginForm = document.getElementById('Login-form');
     const registerForm = document.forms[1];
 
-    function registerUser(email, username, password) {
-      if (!localStorage.getItem('users')) {
-        return;
-      }
-
-      const users = JSON.parse(localStorage.getItem('users'));
-      const existingUser = users.find((user) => user.email === email);
-
-      if (existingUser) {
-        alert('Пользователь с таким email уже существует');
-        return;
-      }
-
-      const user = {
-        id: Date.now(),
-        email: email,
-        username: username,
-        password: password,
-        tasks: []
-      };
-
-      users.push(user);
-      localStorage.setItem('users', JSON.stringify(users));
-    }
+   // Функция регистрации пользователя
+function registerUser(email, username, password) {
+  // Проверка на наличие данных о пользователях в localStorage
+  // if (!localStorage.getItem('users')) {
+  //   return;
+  // }
+   // Получаем всех пользователей из localStorage
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+   // Поиск пользователя с таким же email
+  const existingUser = users.find((user) => user.email === email);
+   // Если пользователь с таким email уже существует, выводим сообщение и прерываем выполнение функции
+  if (existingUser) {
+    alert('Пользователь с таким email уже существует');
+    return;
+  }
+   // Создаем объект пользователя
+  const user = {
+    id: Date.now(),
+    email: email,
+    username: username,
+    password: password,
+    tasks: []
+  };
+   // Добавляем пользователя в массив всех пользователей
+  users.push(user);
+   // Сохраняем массив пользователей в localStorage
+  localStorage.setItem('users', JSON.stringify(users));
+}
+ // Комментарии:
+// 1. Функция принимает параметры email, username, password для создания нового пользователя
+// 2. Проверяем наличие данных о пользователях в localStorage. Если их нет, то прерываем выполнение функции
+// 3. Получаем всех пользователей из localStorage и записываем их в переменную users
+// 4. Ищем пользователя с таким же email в массиве users. Если находим, выводим сообщение и прерываем выполнение функции
+// 5. Создаем объект пользователя со всеми переданными параметрами и пустым массивом задач
+// 6. Добавляем нового пользователя в массив users
+// 7. Сохраняем обновленный массив пользователей в localStorage
+// 8. Функция завершается
 
     function loginUser(email, password) {
       if (!localStorage.getItem('users')) {
@@ -156,7 +169,21 @@ function renderLoginPage() {
       }
     });
   }
+  document.querySelector(".menu-toggle" ).addEventListener('click',function(){
+    this.classList.toggle("rotate");
+
+    document.querySelector('nav').classList.toggle('vertical')
+
+    document.querySelector('ul').classList.toggle('vertical')
+    console.log(document.querySelector('nav').classList)
+  })
+
 }
+
+
+
+
+
 
   function loginPageMarkup(){
     document.body.innerHTML = "";
@@ -174,7 +201,11 @@ return `
       
     </ul>
     <button class="switch-account-btn">Login</button> 
-  </nav>
+    
+    </nav>
+    <button class="navbar-toggler menu-toggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="bi bi-list"></i>
+</button>
 </header>
 <div class="wrapper ">
 <span class="icon-close"><ion-icon name="close-outline">
@@ -258,7 +289,7 @@ return `
 </form>
 </div>
 </div>`
-  }
+}
   
 
   

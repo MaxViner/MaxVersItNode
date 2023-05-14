@@ -13,18 +13,33 @@ function renderSwowTask(id, Title) {
   // Вызываем функцию для отображения подробной информации о задаче
   showTask(id, Title);
   // Добавляем обработчик событий input на страницу задачи
-  document.querySelector('.task-view').addEventListener('input', function(event) {
+  document.querySelector('.task-view').addEventListener('input', function (event) {
     if (event.target.classList.contains('file-image')) {
       // Если пользователь загружает изображение, то отображаем его на странице
-      const file = document.querySelector(".image-edit input").files[0];
+      const file = event.target.files[0];
       const img = document.querySelector('.task-image');
       const reader = new FileReader();
-       reader.onload = function(e) {
+  
+      reader.onload = function (e) {
         img.setAttribute('src', e.target.result);
+        // Сохраняем изображение в localStorage
+        localStorage.setItem('selected-image', e.target.result);
       };
-       reader.readAsDataURL(file);
+  
+      // Читаем содержимое выбранного файла
+      if (file) {
+        reader.readAsDataURL(file);
+      }
     }
   });
+  
+  // Получаем сохраненное изображение при загрузке страницы (если оно есть)
+  const savedImage = localStorage.getItem('selected-image');
+  if (savedImage) {
+    const img = document.querySelector('.task-image');
+    img.setAttribute('src', savedImage);
+    
+  }
 }
  // Функция для отображения подробной информации о задаче
 function showTask(id, Title) {
